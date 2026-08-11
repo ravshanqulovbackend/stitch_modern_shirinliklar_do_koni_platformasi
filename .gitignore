@@ -28,3 +28,6 @@ frontend/.env*
 # Misc
 .mimocode/
 *.log
+
+# Docs kept local-only, not published to the public repo
+/README.md
