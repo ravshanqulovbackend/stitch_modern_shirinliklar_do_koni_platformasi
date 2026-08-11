@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+
+<html lang="uz"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Confectionery Enterprise - Admin Panel</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Playfair+Display:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed": "#261900",
+                    "on-tertiary-container": "#92918c",
+                    "secondary-fixed": "#ffdea5",
+                    "on-surface": "#1a1c1e",
+                    "surface-container-low": "#f3f3f6",
+                    "inverse-primary": "#ffb3b0",
+                    "surface-bright": "#f9f9fc",
+                    "on-primary-fixed": "#380c0d",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "surface-tint": "#8a4d4b",
+                    "primary-fixed-dim": "#ffb3b0",
+                    "tertiary": "#151612",
+                    "on-tertiary": "#ffffff",
+                    "outline-variant": "#d7c2c0",
+                    "secondary": "#775a19",
+                    "secondary-container": "#fed488",
+                    "tertiary-fixed-dim": "#c9c6c1",
+                    "tertiary-fixed": "#e5e2dc",
+                    "on-tertiary-fixed-variant": "#474743",
+                    "on-tertiary-fixed": "#1c1c18",
+                    "on-error-container": "#93000a",
+                    "surface-container-high": "#e8e8ea",
+                    "on-background": "#1a1c1e",
+                    "primary": "#2f0608",
+                    "outline": "#857372",
+                    "background": "#f9f9fc",
+                    "error": "#ba1a1a",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed-variant": "#6e3635",
+                    "secondary-fixed-dim": "#e9c176",
+                    "on-surface-variant": "#524342",
+                    "on-secondary-container": "#785a1a",
+                    "on-secondary": "#ffffff",
+                    "surface": "#f9f9fc",
+                    "surface-variant": "#e2e2e5",
+                    "inverse-surface": "#2f3133",
+                    "tertiary-container": "#2a2a26",
+                    "surface-container-highest": "#e2e2e5",
+                    "error-container": "#ffdad6",
+                    "primary-container": "#4a1a1a",
+                    "on-secondary-fixed-variant": "#5d4201",
+                    "inverse-on-surface": "#f0f0f3",
+                    "on-primary-container": "#c57e7b",
+                    "surface-container": "#eeeef0",
+                    "primary-fixed": "#ffdad8",
+                    "surface-dim": "#dadadc"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-sm": "8px",
+                    "section-gap": "80px",
+                    "gutter": "24px",
+                    "unit": "8px",
+                    "stack-lg": "32px",
+                    "margin-mobile": "20px",
+                    "stack-md": "16px",
+                    "margin-desktop": "64px",
+                    "container-max-width": "1280px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Playfair Display"],
+                    "body-lg": ["Inter"],
+                    "headline-lg-mobile": ["Playfair Display"],
+                    "label-sm": ["Inter"],
+                    "headline-lg": ["Playfair Display"],
+                    "title-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Playfair Display"]
+            },
+            "fontSize": {
+                    "display-lg": ["56px", {"lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "headline-lg": ["40px", {"lineHeight": "48px", "fontWeight": "700"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "headline-md": ["28px", {"lineHeight": "36px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .sidebar-transition {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #d7c2c0;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Navigation Shell (SideNavBar) -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low dark:bg-tertiary-container border-r border-outline-variant dark:border-outline flex flex-col py-stack-md z-50">
+<div class="px-6 mb-stack-lg">
+<h1 class="font-display-lg text-title-lg text-primary dark:text-primary-fixed">Admin Panel</h1>
+<p class="font-label-md text-on-surface-variant opacity-70">Factory Management</p>
+</div>
+<nav class="flex-1 px-2 space-y-1 overflow-y-auto custom-scrollbar">
+<!-- Active: Dashboard -->
+<a class="flex items-center px-4 py-3 bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-lg mx-2 my-1 transition-transform translate-x-1 group" href="#">
+<span class="material-symbols-outlined mr-3" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-md">Dashboard</span>
+</a>
+<a class="flex items-center px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container rounded-lg mx-2 my-1 transition-colors group" href="#">
+<span class="material-symbols-outlined mr-3">inventory_2</span>
+<span class="font-label-md">Mahsulotlar</span>
+</a>
+<a class="flex items-center px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container rounded-lg mx-2 my-1 transition-colors group" href="#">
+<span class="material-symbols-outlined mr-3">shopping_bag</span>
+<span class="font-label-md">Buyurtmalar</span>
+</a>
+<a class="flex items-center px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container rounded-lg mx-2 my-1 transition-colors group" href="#">
+<span class="material-symbols-outlined mr-3">group</span>
+<span class="font-label-md">Mijozlar</span>
+</a>
+<a class="flex items-center px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container rounded-lg mx-2 my-1 transition-colors group" href="#">
+<span class="material-symbols-outlined mr-3">settings</span>
+<span class="font-label-md">Sozlamalar</span>
+</a>
+</nav>
+<div class="mt-auto px-4 border-t border-outline-variant pt-stack-md mx-2">
+<button class="w-full flex items-center px-4 py-3 text-on-surface-variant hover:text-primary transition-colors mb-2">
+<span class="material-symbols-outlined mr-3">help</span>
+<span class="font-label-md">Help Center</span>
+</button>
+<div class="flex items-center p-3 rounded-xl bg-surface-container-high dark:bg-surface-container mb-4">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold mr-3 shadow-sm">
+                    A
+                </div>
+<div class="overflow-hidden">
+<p class="font-label-md text-on-surface truncate">Admin User</p>
+<p class="text-[10px] uppercase tracking-tighter text-on-surface-variant">Sizning Profilingiz</p>
+</div>
+<button class="ml-auto text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined">logout</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 min-h-screen bg-background flex flex-col">
+<!-- Header -->
+<header class="h-20 sticky top-0 bg-surface/80 backdrop-blur-md z-40 flex items-center justify-between px-margin-desktop">
+<div class="flex items-center space-x-stack-md">
+<h2 class="font-headline-md text-on-surface">Xush kelibsiz, <span class="text-primary">Admin</span></h2>
+</div>
+<div class="flex items-center space-x-6">
+<!-- Search Bar -->
+<div class="relative group hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary transition-colors">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full w-64 focus:ring-2 focus:ring-primary/20 focus:bg-surface-container transition-all font-body-md" placeholder="Qidiruv..." type="text"/>
+</div>
+<div class="flex items-center space-x-4 border-l border-outline-variant pl-6">
+<button class="relative p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-all">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border-2 border-surface"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-all">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<div class="p-margin-desktop max-w-container-max-width mx-auto w-full space-y-stack-lg">
+<!-- Stat Cards Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-stack-lg rounded-xl border border-outline-variant hover:shadow-[0_8px_30px_rgb(47,6,8,0.08)] transition-all group">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-primary-container text-on-primary-container rounded-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
+</div>
+<span class="text-secondary font-label-sm">+12% vs kecha</span>
+</div>
+<h3 class="text-on-surface-variant font-label-md mb-1 uppercase tracking-wider">Bugungi buyurtmalar</h3>
+<p class="text-display-lg font-display-lg text-primary leading-none">45</p>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-stack-lg rounded-xl border border-outline-variant hover:shadow-[0_8px_30px_rgb(47,6,8,0.08)] transition-all group">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-secondary-container text-on-secondary-container rounded-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">payments</span>
+</div>
+<span class="text-secondary font-label-sm">+5.4% vs o'tgan hafta</span>
+</div>
+<h3 class="text-on-surface-variant font-label-md mb-1 uppercase tracking-wider">Haftalik daromad</h3>
+<p class="text-headline-lg font-display-lg text-primary leading-none">120M <span class="text-title-lg font-body-md uppercase">uzs</span></p>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-stack-lg rounded-xl border border-outline-variant hover:shadow-[0_8px_30px_rgb(47,6,8,0.08)] transition-all group">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-tertiary-container text-on-tertiary-container rounded-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person_add</span>
+</div>
+<span class="text-error font-label-sm">Yangi</span>
+</div>
+<h3 class="text-on-surface-variant font-label-md mb-1 uppercase tracking-wider">Yangi arizalar</h3>
+<p class="text-display-lg font-display-lg text-primary leading-none">12</p>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest p-stack-lg rounded-xl border border-outline-variant hover:shadow-[0_8px_30px_rgb(47,6,8,0.08)] transition-all group">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-outline-variant text-primary rounded-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">inventory</span>
+</div>
+<span class="text-on-surface-variant font-label-sm">Barchasi</span>
+</div>
+<h3 class="text-on-surface-variant font-label-md mb-1 uppercase tracking-wider">Faol mahsulotlar</h3>
+<p class="text-display-lg font-display-lg text-primary leading-none">156</p>
+</div>
+</section>
+<!-- Main Interactive Section -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Sales Chart Mockup -->
+<div class="lg:col-span-2 bg-surface-container-lowest p-stack-lg rounded-xl border border-outline-variant">
+<div class="flex justify-between items-center mb-6">
+<div>
+<h3 class="font-title-lg text-on-surface">Sotuvlar tahlili</h3>
+<p class="font-label-md text-on-surface-variant">So'nggi 7 kunlik ko'rsatkichlar</p>
+</div>
+<select class="bg-surface-container border-none rounded-lg font-label-sm text-on-surface-variant focus:ring-1 focus:ring-primary">
+<option>Haftalik</option>
+<option>Oylik</option>
+</select>
+</div>
+<div class="h-64 flex items-end justify-between space-x-4 px-2">
+<!-- Custom Chart Visualization -->
+<div class="flex flex-col items-center flex-1 space-y-2">
+<div class="w-full bg-primary-container/20 rounded-t-lg relative group h-32">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg h-2/3 group-hover:h-3/4 transition-all duration-500"></div>
+</div>
+<span class="font-label-sm text-on-surface-variant">Du</span>
+</div>
+<div class="flex flex-col items-center flex-1 space-y-2">
+<div class="w-full bg-primary-container/20 rounded-t-lg relative group h-32">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg h-1/2 group-hover:h-3/5 transition-all duration-500"></div>
+</div>
+<span class="font-label-sm text-on-surface-variant">Se</span>
+</div>
+<div class="flex flex-col items-center flex-1 space-y-2">
+<div class="w-full bg-primary-container/20 rounded-t-lg relative group h-32">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg h-4/5 group-hover:h-full transition-all duration-500"></div>
+</div>
+<span class="font-label-sm text-on-surface-variant">Ch</span>
+</div>
+<div class="flex flex-col items-center flex-1 space-y-2">
+<div class="w-full bg-primary-container/20 rounded-t-lg relative group h-32">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg h-3/5 group-hover:h-2/3 transition-all duration-500"></div>
+</div>
+<span class="font-label-sm text-on-surface-variant">Pa</span>
+</div>
+<div class="flex flex-col items-center flex-1 space-y-2">
+<div class="w-full bg-primary-container/20 rounded-t-lg relative group h-32">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg h-full group-hover:h-full transition-all duration-500"></div>
+</div>
+<span class="font-label-sm text-on-surface-variant">Ju</span>
+</div>
+<div class="flex flex-col items-center flex-1 space-y-2">
+<div class="w-full bg-primary-container/20 rounded-t-lg relative group h-32">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg h-2/3 group-hover:h-3/4 transition-all duration-500"></div>
+</div>
+<span class="font-label-sm text-on-surface-variant">Sh</span>
+</div>
+<div class="flex flex-col items-center flex-1 space-y-2">
+<div class="w-full bg-primary-container/20 rounded-t-lg relative group h-32">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg h-3/4 group-hover:h-4/5 transition-all duration-500"></div>
+</div>
+<span class="font-label-sm text-on-surface-variant">Ya</span>
+</div>
+</div>
+</div>
+<!-- Side Info / Top Products -->
+<div class="bg-surface-container-lowest p-stack-lg rounded-xl border border-outline-variant flex flex-col">
+<h3 class="font-title-lg text-on-surface mb-6">Mashhur mahsulotlar</h3>
+<div class="space-y-4 flex-1">
+<div class="flex items-center space-x-4">
+<div class="w-12 h-12 rounded-lg bg-cover bg-center bg-surface-container" data-alt="A high-end studio photograph of a premium dark chocolate bar with gold foil accents, presented on a marble surface with soft atmospheric lighting in a corporate editorial style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAR_pUjQMOlLuKEte56nvLgrU3WbDv_X89WP5H078haVLA8c7uGX4ImGTHYbi4hclWnSd4GzfUHr5afUkfQ9VSWYbyxPk1bYnycPX2ziKoe7S-VnckquIce62pLDLga7UVoYKSMscTSrT5Xzmm48dUv9DvqjCTkd07jodH0gEW54XA2DiuZXcNg_UqpJ87LH5__fdSC6Y9S4MK6g50rYo0SKVNN9LPxeQPySRnxvkHlEA8RFFd98aJQ')"></div>
+<div class="flex-1">
+<p class="font-label-md text-on-surface truncate">Artisanal Dark Bar</p>
+<p class="text-xs text-on-surface-variant">845 dona sotildi</p>
+</div>
+<span class="text-secondary font-bold text-sm">24%</span>
+</div>
+<div class="flex items-center space-x-4">
+<div class="w-12 h-12 rounded-lg bg-cover bg-center bg-surface-container" data-alt="Close-up professional product shot of luxury hand-crafted truffles with elegant cocoa dusting, set against a deep burgundy background reflecting an enterprise-level confectionery brand's sophistication." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBK_vX7_fiMUmKpRMpDt6V3qENO7GAdv6ogMwDq4IS54-bQwBP-G0_DSQb6KhxNbz1PzomKhUOunmpoTOIUulwH7Ag4sY6Y8SKJH3d9vJ0DvXcH7II4xy4kLVRy8UYdhPUPq3eBuQxGgWYfM9nCww5ftJSzVyIe9dgWUfiEgI_djke4ShuiMfEW1zUyeVd6UFSntmWn3tf0RxVE17ev2oEK7V9UUdeVbspolv0cM99h2Vk9cY65bsV0')"></div>
+<div class="flex-1">
+<p class="font-label-md text-on-surface truncate">Velvet Truffle Box</p>
+<p class="text-xs text-on-surface-variant">612 dona sotildi</p>
+</div>
+<span class="text-secondary font-bold text-sm">18%</span>
+</div>
+<div class="flex items-center space-x-4">
+<div class="w-12 h-12 rounded-lg bg-cover bg-center bg-surface-container" data-alt="A macro photograph of premium hazelnut praline clusters, highlighting textures of crunchy nuts and smooth chocolate under bright, clinical studio lighting that emphasizes quality control." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBxY7A5GgE-oKozrXRvxF3YSWCEFK02QVuyBh96RdSOdqoPyckDi657zc4t-sRtX2v3vUIMWV9CsnPEo0R79OEw3HQk8i1J40wwTbSCtX-p0fxwcSt5N1nfe2mgPPquYYJGrswvW4ry3ZNn1BI9oV6FI6GlVokMkSODN2blx1klzeIO-7DG6p9OuXpDlLNTCtQWtdbXKHpazdtyTcduOeGLikrSmIdJyIbVoFW9HOIQFAo4vCWoDdwY')"></div>
+<div class="flex-1">
+<p class="font-label-md text-on-surface truncate">Hazelnut Praline</p>
+<p class="text-xs text-on-surface-variant">420 dona sotildi</p>
+</div>
+<span class="text-secondary font-bold text-sm">12%</span>
+</div>
+</div>
+<button class="mt-6 w-full py-3 border border-secondary text-secondary rounded-lg font-label-md hover:bg-secondary-fixed transition-colors">Barcha hisobotlar</button>
+</div>
+</div>
+<!-- Recent Orders Table -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden shadow-sm">
+<div class="px-stack-lg py-6 border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-title-lg text-on-surface">Yaqindagi buyurtmalar</h3>
+<button class="text-primary font-label-md hover:underline decoration-2 underline-offset-4 flex items-center">
+                        Barchasini ko'rish <span class="material-symbols-outlined ml-1">chevron_right</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low">
+<th class="px-6 py-4 font-label-sm uppercase tracking-wider text-on-surface-variant">ID</th>
+<th class="px-6 py-4 font-label-sm uppercase tracking-wider text-on-surface-variant">Mijoz</th>
+<th class="px-6 py-4 font-label-sm uppercase tracking-wider text-on-surface-variant">Status</th>
+<th class="px-6 py-4 font-label-sm uppercase tracking-wider text-on-surface-variant">Summa</th>
+<th class="px-6 py-4 font-label-sm uppercase tracking-wider text-on-surface-variant">Sana</th>
+<th class="px-6 py-4 font-label-sm uppercase tracking-wider text-on-surface-variant text-center">Amallar</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="px-6 py-4 font-label-md text-primary">#ORD-8824</td>
+<td class="px-6 py-4 text-on-surface">Alisher Navoiy</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-[11px] font-bold uppercase tracking-tight">Tasdiqlandi</span>
+</td>
+<td class="px-6 py-4 font-medium text-on-surface">2,450,000 UZS</td>
+<td class="px-6 py-4 text-on-surface-variant">12.10.2024</td>
+<td class="px-6 py-4 text-center">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="px-6 py-4 font-label-md text-primary">#ORD-8823</td>
+<td class="px-6 py-4 text-on-surface">Zulayho Rasulova</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 rounded-full bg-surface-variant text-on-surface-variant text-[11px] font-bold uppercase tracking-tight">Yangi</span>
+</td>
+<td class="px-6 py-4 font-medium text-on-surface">1,120,000 UZS</td>
+<td class="px-6 py-4 text-on-surface-variant">12.10.2024</td>
+<td class="px-6 py-4 text-center">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="px-6 py-4 font-label-md text-primary">#ORD-8822</td>
+<td class="px-6 py-4 text-on-surface">Bekzod Toshkentov</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 rounded-full bg-primary-container text-on-primary-container text-[11px] font-bold uppercase tracking-tight">Yetkazilmoqda</span>
+</td>
+<td class="px-6 py-4 font-medium text-on-surface">4,800,000 UZS</td>
+<td class="px-6 py-4 text-on-surface-variant">11.10.2024</td>
+<td class="px-6 py-4 text-center">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="px-6 py-4 font-label-md text-primary">#ORD-8821</td>
+<td class="px-6 py-4 text-on-surface">Nilufar Karimova</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-[11px] font-bold uppercase tracking-tight">Tasdiqlandi</span>
+</td>
+<td class="px-6 py-4 font-medium text-on-surface">850,000 UZS</td>
+<td class="px-6 py-4 text-on-surface-variant">11.10.2024</td>
+<td class="px-6 py-4 text-center">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<!-- Footer -->
+<footer class="mt-auto border-t border-outline-variant bg-surface-container-low py-6 px-margin-desktop">
+<div class="max-w-container-max-width mx-auto flex flex-col md:flex-row justify-between items-center text-on-surface-variant font-label-sm uppercase tracking-wide">
+<p>© 2024 Confectionery Enterprise. Barcha huquqlar himoyalangan.</p>
+<div class="flex space-x-6 mt-4 md:mt-0">
+<a class="hover:text-primary transition-colors" href="#">Sertifikatlar</a>
+<a class="hover:text-primary transition-colors" href="#">Vakansiyalar</a>
+<a class="hover:text-primary transition-colors" href="#">Maxfiylik siyosati</a>
+</div>
+</div>
+</footer>
+</main>
+<script>
+        // Micro-interaction for hover effects on stat cards
+        document.querySelectorAll('.bg-surface-container-lowest').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-4px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body></html>

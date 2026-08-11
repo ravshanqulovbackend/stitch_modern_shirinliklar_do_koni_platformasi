@@ -1,0 +1,6 @@
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('product/<int:product_pk>/', views.ReviewListCreateView.as_view(), name='review-list'),
+]

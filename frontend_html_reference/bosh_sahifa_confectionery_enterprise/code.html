@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html lang="uz"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Confectionery Enterprise - Sifat va an'analar uyg'unligi</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed": "#261900",
+                    "on-tertiary-container": "#92918c",
+                    "secondary-fixed": "#ffdea5",
+                    "on-surface": "#1a1c1e",
+                    "surface-container-low": "#f3f3f6",
+                    "inverse-primary": "#ffb3b0",
+                    "surface-bright": "#f9f9fc",
+                    "on-primary-fixed": "#380c0d",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "surface-tint": "#8a4d4b",
+                    "primary-fixed-dim": "#ffb3b0",
+                    "tertiary": "#151612",
+                    "on-tertiary": "#ffffff",
+                    "outline-variant": "#d7c2c0",
+                    "secondary": "#775a19",
+                    "secondary-container": "#fed488",
+                    "tertiary-fixed-dim": "#c9c6c1",
+                    "tertiary-fixed": "#e5e2dc",
+                    "on-tertiary-fixed-variant": "#474743",
+                    "on-tertiary-fixed": "#1c1c18",
+                    "on-error-container": "#93000a",
+                    "surface-container-high": "#e8e8ea",
+                    "on-background": "#1a1c1e",
+                    "primary": "#2f0608",
+                    "outline": "#857372",
+                    "background": "#f9f9fc",
+                    "error": "#ba1a1a",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed-variant": "#6e3635",
+                    "secondary-fixed-dim": "#e9c176",
+                    "on-surface-variant": "#524342",
+                    "on-secondary-container": "#785a1a",
+                    "on-secondary": "#ffffff",
+                    "surface": "#f9f9fc",
+                    "surface-variant": "#e2e2e5",
+                    "inverse-surface": "#2f3133",
+                    "tertiary-container": "#2a2a26",
+                    "surface-container-highest": "#e2e2e5",
+                    "error-container": "#ffdad6",
+                    "primary-container": "#4a1a1a",
+                    "on-secondary-fixed-variant": "#5d4201",
+                    "inverse-on-surface": "#f0f0f3",
+                    "on-primary-container": "#c57e7b",
+                    "surface-container": "#eeeef0",
+                    "primary-fixed": "#ffdad8",
+                    "surface-dim": "#dadadc"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-sm": "8px",
+                    "section-gap": "80px",
+                    "gutter": "24px",
+                    "unit": "8px",
+                    "stack-lg": "32px",
+                    "margin-mobile": "20px",
+                    "stack-md": "16px",
+                    "margin-desktop": "64px",
+                    "container-max-width": "1280px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Playfair Display"],
+                    "body-lg": ["Inter"],
+                    "headline-lg-mobile": ["Playfair Display"],
+                    "label-sm": ["Inter"],
+                    "headline-lg": ["Playfair Display"],
+                    "title-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Playfair Display"]
+            },
+            "fontSize": {
+                    "display-lg": ["56px", {"lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "headline-lg": ["40px", {"lineHeight": "48px", "fontWeight": "700"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "headline-md": ["28px", {"lineHeight": "36px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hero-gradient {
+            background: linear-gradient(to right, rgba(47, 6, 8, 0.9) 0%, rgba(47, 6, 8, 0.4) 100%);
+        }
+        .tonal-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .tonal-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -15px rgba(47, 6, 8, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="sticky top-0 w-full z-50 bg-surface dark:bg-surface-dim shadow-sm dark:shadow-none border-b border-outline-variant dark:border-outline">
+<nav class="flex justify-between items-center w-full px-margin-desktop max-w-container-max-width mx-auto h-20">
+<div class="font-display-lg text-headline-md text-primary dark:text-primary-fixed uppercase tracking-wider">
+                Confectionery Enterprise
+            </div>
+<div class="hidden md:flex items-center gap-stack-lg">
+<a class="font-label-md text-label-md text-primary dark:text-primary-fixed font-bold border-b-2 border-primary dark:border-primary-fixed pb-1" href="#">Bosh sahifa</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Biz haqimizda</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Mahsulotlar</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Ishlab chiqarish</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Hamkorlik</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Kontakt</a>
+</div>
+<div class="flex items-center gap-gutter">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-all">search</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-all">shopping_cart</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-all">account_circle</button>
+</div>
+</nav>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative h-[870px] w-full overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A cinematic, high-end professional photograph of premium dark chocolate truffles arranged elegantly on a marble surface. The lighting is dramatic and low-key, highlighting the smooth texture and cocoa dusting of the confectionery. The background shows a hint of a sophisticated, clean industrial kitchen with stainless steel accents. The overall mood is luxurious, prestigious, and artisanal, reflecting a high-standard manufacturing heritage." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD0bArpWeTgQjq9Dyi4f8WVFgm9ZMlB21a9b9J7ZpEMUCqhVgIMpCDVd-3KfRw8q-UnAQGFSs7IpkYviPLEKUMqJvlyVzus0psJF7KubmIuj6zr3QjI4BdYXo06LOGAmb3oBJ1tzcHJlnQSr7fztUpZBcT4kh0-LKuDG7ORAbT9M1B40bzmq2ODWHAU0pankSvIXn4Yo7MVLnquUMQcEvZOewFbjFyjYdB-bnnPgjhbtAxFmKI6AwL9')"></div>
+<div class="absolute inset-0 hero-gradient flex items-center">
+<div class="max-w-container-max-width mx-auto px-margin-desktop w-full text-on-primary">
+<div class="max-w-2xl">
+<h1 class="font-display-lg text-display-lg mb-stack-md leading-tight">
+                            Sifat va an'analar uyg'unligi
+                        </h1>
+<p class="font-body-lg text-body-lg mb-stack-lg opacity-90">
+                            Biz O'zbekistonning yetakchi qandolat ishlab chiqaruvchisi sifatida, har bir mahsulotda asrlik an'analarni zamonaviy texnologiyalar bilan birlashtiramiz.
+                        </p>
+<div class="flex gap-gutter">
+<button class="bg-primary text-on-primary px-10 py-4 rounded-lg font-title-lg hover:brightness-110 active:scale-[0.98] transition-all">
+                                Mahsulotlarni ko'rish
+                            </button>
+<button class="border border-secondary-fixed text-secondary-fixed px-10 py-4 rounded-lg font-title-lg hover:bg-secondary-fixed/10 transition-all">
+                                Biz haqimizda
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Company Stats Section -->
+<section class="relative -mt-16 z-10 max-w-container-max-width mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="bg-surface-container-lowest p-stack-lg border border-outline-variant shadow-sm flex flex-col items-center text-center">
+<span class="font-display-lg text-headline-lg text-primary">25+</span>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mt-2">Yillik tajriba</span>
+</div>
+<div class="bg-surface-container-lowest p-stack-lg border border-outline-variant shadow-sm flex flex-col items-center text-center">
+<span class="font-display-lg text-headline-lg text-primary">500+</span>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mt-2">Xodim</span>
+</div>
+<div class="bg-surface-container-lowest p-stack-lg border border-outline-variant shadow-sm flex flex-col items-center text-center">
+<span class="font-display-lg text-headline-lg text-primary">100+</span>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mt-2">Mahsulot turi</span>
+</div>
+<div class="bg-surface-container-lowest p-stack-lg border border-outline-variant shadow-sm flex flex-col items-center text-center">
+<span class="font-display-lg text-headline-lg text-primary">10+</span>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mt-2">Eksport davlatlari</span>
+</div>
+</section>
+<!-- About Section -->
+<section class="py-section-gap max-w-container-max-width mx-auto px-margin-desktop grid md:grid-cols-2 gap-20 items-center">
+<div class="relative">
+<div class="aspect-square bg-cover bg-center rounded-lg" data-alt="A bright, wide-angle interior shot of a clinical and modern confectionery manufacturing facility. Stainless steel automated machinery is visible, perfectly clean and organized, showing the assembly line of chocolate production. The lighting is high-key and professional, emphasizing sanitation and precision. Workers in white protective gear are seen monitoring high-tech control panels in the background, reinforcing a sense of industrial trust and quality control." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAHzcUlS4xvMxjTk7ATGp5YXpUJ6rUhIXDOXI4q28qUUj6cwindqxhlXQWz3HA57VTbVV4NqqfNpXyuVocqx1icAwVnntnpk3nEij61cR-EyGdbmSB917hti0kFS7HwGE2lDv5x0VN6An3pjGpPd4j_g3Ix0fvIm-YpHPxCmfCaHqZA1OjA7hvCoxmgUc8VWU_doStct7gXKe99GmtarTW7l7rlgk7vCQlMd7xgMx5_EjDkkDO2j1XC')"></div>
+<div class="absolute -bottom-6 -right-6 w-48 h-48 border-[12px] border-surface-container-high hidden md:block"></div>
+</div>
+<div>
+<span class="font-label-md text-label-md text-secondary uppercase tracking-[0.2em] mb-4 block">Kompaniya haqida</span>
+<h2 class="font-display-lg text-headline-lg text-primary mb-stack-lg">Biz haqimizda</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-stack-md">
+                    1999-yilda asos solingan "Confectionery Enterprise" fabrikasi kichik oilaviy korxonadan Markaziy Osiyodagi eng yirik ishlab chiqarish quvvatlaridan biriga aylandi.
+                </p>
+<p class="font-body-md text-body-md text-on-surface-variant mb-stack-lg">
+                    Bizning falsafamiz — murosasiz sifat. Har bir shokolad bo'lagi va har bir pechyenida biz o'z mahoratimizni va eng sara xomashyoni mujassam etamiz. Fabrikamiz xalqaro standartlarga to'liq javob beruvchi uskunalar bilan jihozlangan.
+                </p>
+<button class="flex items-center gap-2 text-primary font-title-lg group">
+                    Batafsil ma’lumot 
+                    <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- Product Categories -->
+<section class="bg-surface-container-low py-section-gap">
+<div class="max-w-container-max-width mx-auto px-margin-desktop">
+<div class="text-center mb-16">
+<h2 class="font-display-lg text-headline-lg text-primary mb-4">Mahsulot toifalari</h2>
+<p class="text-on-surface-variant max-w-xl mx-auto">Har bir lazzat muxlisi uchun maxsus tanlangan saralangan qandolat mahsulotlari</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<!-- Category 1 -->
+<div class="tonal-card bg-surface overflow-hidden group border border-outline-variant">
+<div class="h-64 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="A high-end editorial shot of premium assorted dark and milk chocolates. Some are broken to show rich ganache fillings. The lighting is sophisticated, creating soft highlights on the glossy chocolate surfaces. The style is minimalist and corporate, presented on a light neutral background to maintain a clean architecture aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCA9hoI_AnLt3haIOSYJyr4ubo4P6nnCDoPHbNkyHKgOqjGrhLp4wGtHkKLR6JO65hFDhsE_KyftWUXpk8rtP7t1UHzGY_2N1Ujf3zAd2hG27AeWdP8hCpb7Czy6lmE873oabHLuRj_SI86fiTFZEE8Ldlk6RLT4L-Zc3aCJfuzq_WD5WAqvtlRtJFoswMxB3zVRpzqqmRLpgapMBT9AMglqdcFpSmfdpw_IcGoW3oFSJtYXXil4tIY')"></div>
+<div class="p-stack-md">
+<h3 class="font-title-lg text-title-lg text-primary mb-1">Shokoladlar</h3>
+<p class="text-label-md text-on-surface-variant">24 turdagi mahsulot</p>
+</div>
+</div>
+<!-- Category 2 -->
+<div class="tonal-card bg-surface overflow-hidden group border border-outline-variant">
+<div class="h-64 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Close-up of artisanal biscuits and cookies with delicate textures. Some have butter-rich golden edges, others have almond slivers. The presentation is organized and symmetrical, reflecting industrial precision and quality. The light-mode color palette uses creams and warm golds to evoke a sense of tradition and reliability." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDj-vjkjSQjuPzPbg0swObSXVPW8oR7s2pmLdFKnIV3Dl6aC0-QxiczBL-5Q9P-IQHp4cNh1krPCnVlvwElpsoCPMya9Tk2ZIaaHJdFGSbkJrtgc3wFwTM3sRhPfInNc1hLVz2JGOKx2PlQbbToMLYJqFHts_MnNdFkBqdemTFRvW5YJji38eafl0jSKS__ErA1DxItMSxwPvQ0knF-RCDt87hPLEva5PjK3Mgl_PLllIZKW1Fv3uOQ')"></div>
+<div class="p-stack-md">
+<h3 class="font-title-lg text-title-lg text-primary mb-1">Pechyenilar</h3>
+<p class="text-label-md text-on-surface-variant">42 turdagi mahsulot</p>
+</div>
+</div>
+<!-- Category 3 -->
+<div class="tonal-card bg-surface overflow-hidden group border border-outline-variant">
+<div class="h-64 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="A minimalist presentation of translucent, high-quality fruit caramels. The caramels are glowing under soft, diffused lighting, showcasing their rich amber and honey-colored tones. The composition is clean and structured, emphasizing the clarity and purity of the ingredients used in the manufacturing process." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAmr89xTqO4ozFWC3mzh_6NLpfL9C52r6c1_GyfZ1qo56IQiRzQE8FnmfLpzuz4m3qnS28cm665yc6yIDxfHyhtRxGeqE9V9yaNFpkGK-gjzwJk-QxJSwcwXAs4ELuAmOWyPlQO41hdzbNcfc7g5DR2EG6FHpkkdaPS-vpQy_nNCIZLQhaU5Jl9He4CJntG3848RtDsrkVZT6fqMQT0aP8VkNhYDG86D50TnXTclRUDitxsiKFqEc8f')"></div>
+<div class="p-stack-md">
+<h3 class="font-title-lg text-title-lg text-primary mb-1">Karamellar</h3>
+<p class="text-label-md text-on-surface-variant">15 turdagi mahsulot</p>
+</div>
+</div>
+<!-- Category 4 -->
+<div class="tonal-card bg-surface overflow-hidden group border border-outline-variant">
+<div class="h-64 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="An assortment of premium fruit marmalades dusted with fine sugar crystals. The colors are vibrant yet sophisticated—deep berry reds and citrus oranges. The photo uses a shallow depth of field to focus on the crystalline texture. The aesthetic is clean, luxurious, and evokes a feeling of high-end artisanal craft." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCVMIVxEgJ2rr9zuw-87cA73eI0Qe1ygw5TXKF0JrkSf1NTolhr-JQvqJdi0PmJFgR72amNYc4wNkcwbayVIE9bIe9gN4hR480xCN1mfzZoInDaihkaScGX7dc9ADKcTlvP2_s6KkQ-WcvNulf4MN8NYA-NYLFqTE95vw0D6DTs_QL3sEE7avslD3yqOvmKyYkwIZpI6QivWMN8ZVngZ0Mj-VJRqojmVcvuzonLupAQrIpC2S_c1E0X')"></div>
+<div class="p-stack-md">
+<h3 class="font-title-lg text-title-lg text-primary mb-1">Marmeladlar</h3>
+<p class="text-label-md text-on-surface-variant">18 turdagi mahsulot</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Production Process Highlight -->
+<section class="py-section-gap max-w-container-max-width mx-auto px-margin-desktop">
+<div class="bg-primary p-16 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-1/3 h-full opacity-10 pointer-events-none">
+
+</div>
+<div class="relative z-10 text-on-primary">
+<h2 class="font-display-lg text-headline-lg mb-12">Ishlab chiqarish quvvati va texnologiyalar</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="flex flex-col gap-4">
+<div class="w-16 h-16 rounded-full border border-on-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl">precision_manufacturing</span>
+</div>
+<h4 class="font-title-lg text-title-lg">Zamonaviy uskunalar</h4>
+<p class="text-on-primary/70">Germaniya va Italiyaning so'nggi avlod ishlab chiqarish liniyalari bilan to'liq avtomatlashtirilgan jarayon.</p>
+</div>
+<div class="flex flex-col gap-4">
+<div class="w-16 h-16 rounded-full border border-on-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl">verified_user</span>
+</div>
+<h4 class="font-title-lg text-title-lg">Sifat nazorati</h4>
+<p class="text-on-primary/70">Xomashyodan to tayyor mahsulotgacha bo'lgan har bir bosqich laboratoriyamizda qat'iy nazorat qilinadi.</p>
+</div>
+<div class="flex flex-col gap-4">
+<div class="w-16 h-16 rounded-full border border-on-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl">eco</span>
+</div>
+<h4 class="font-title-lg text-title-lg">Ekologik toza</h4>
+<p class="text-on-primary/70">Faqat tabiiy va genetik modifikatsiya qilinmagan ingredientlardan foydalanishga sodiqmiz.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Quality & Certificates -->
+<section class="py-16 bg-white border-y border-outline-variant">
+<div class="max-w-container-max-width mx-auto px-margin-desktop flex flex-wrap justify-center items-center gap-24 opacity-60 grayscale hover:grayscale-0 transition-all">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 bg-primary/5 rounded-full flex items-center justify-center border border-outline">
+<span class="font-bold text-primary">ISO</span>
+</div>
+<span class="font-label-md uppercase tracking-widest text-primary">ISO 9001:2015</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 bg-primary/5 rounded-full flex items-center justify-center border border-outline">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="font-label-md uppercase tracking-widest text-primary">Halal Certified</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 bg-primary/5 rounded-full flex items-center justify-center border border-outline">
+<span class="font-bold text-primary">HACCP</span>
+</div>
+<span class="font-label-md uppercase tracking-widest text-primary">Food Safety</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full pt-section-gap pb-stack-lg bg-primary dark:bg-tertiary-container text-on-primary dark:text-on-tertiary-container">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-container-max-width mx-auto px-margin-desktop">
+<div class="col-span-1 md:col-span-1">
+<div class="font-display-lg text-headline-md text-on-primary dark:text-on-tertiary-container mb-6">
+                    Confectionery Enterprise
+                </div>
+<p class="text-on-primary/70 mb-8 leading-relaxed">
+                    Sifatli shirinliklar orqali hayotingizga quvonch ulashish — bizning oliy maqsadimiz.
+                </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full border border-on-primary/20 flex items-center justify-center hover:bg-on-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">public</span>
+</a>
+<a class="w-10 h-10 rounded-full border border-on-primary/20 flex items-center justify-center hover:bg-on-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">alternate_email</span>
+</a>
+</div>
+</div>
+<div>
+<h5 class="font-label-md text-label-md uppercase tracking-widest mb-6 opacity-60">Bo'limlar</h5>
+<ul class="flex flex-col gap-3">
+<li><a class="text-on-primary/80 hover:text-on-primary hover:underline decoration-secondary-fixed underline-offset-4 transition-colors" href="#">Bosh sahifa</a></li>
+<li><a class="text-on-primary/80 hover:text-on-primary hover:underline decoration-secondary-fixed underline-offset-4 transition-colors" href="#">Mahsulotlar</a></li>
+<li><a class="text-on-primary/80 hover:text-on-primary hover:underline decoration-secondary-fixed underline-offset-4 transition-colors" href="#">Texnologiyalar</a></li>
+<li><a class="text-on-primary/80 hover:text-on-primary hover:underline decoration-secondary-fixed underline-offset-4 transition-colors" href="#">Hamkorlik</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-md text-label-md uppercase tracking-widest mb-6 opacity-60">Ma'lumot</h5>
+<ul class="flex flex-col gap-3">
+<li><a class="text-on-primary/80 hover:text-on-primary hover:underline decoration-secondary-fixed underline-offset-4 transition-colors" href="#">Maxfiylik siyosati</a></li>
+<li><a class="text-on-primary/80 hover:text-on-primary hover:underline decoration-secondary-fixed underline-offset-4 transition-colors" href="#">Foydalanish shartlari</a></li>
+<li><a class="text-on-primary/80 hover:text-on-primary hover:underline decoration-secondary-fixed underline-offset-4 transition-colors" href="#">Sertifikatlar</a></li>
+<li><a class="text-on-primary/80 hover:text-on-primary hover:underline decoration-secondary-fixed underline-offset-4 transition-colors" href="#">Vakansiyalar</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-md text-label-md uppercase tracking-widest mb-6 opacity-60">Kontakt</h5>
+<p class="text-on-primary/80 mb-2">Toshkent sh., Yunusobod tumani, 5-mavze.</p>
+<p class="text-on-primary/80 mb-2">+998 71 123 45 67</p>
+<p class="text-on-primary/80">info@confectionery.uz</p>
+</div>
+</div>
+<div class="max-w-container-max-width mx-auto px-margin-desktop mt-section-gap pt-stack-lg border-t border-on-primary/10">
+<p class="font-label-sm text-label-sm uppercase text-on-primary/60 text-center md:text-left">
+                © 2024 Confectionery Enterprise. Barcha huquqlar himoyalangan.
+            </p>
+</div>
+</footer>
+<script>
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('transition-all', 'duration-1000');
+        });
+    </script>
+</body></html>

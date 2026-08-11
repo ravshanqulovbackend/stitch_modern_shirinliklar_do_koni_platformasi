@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+
+<html class="light" lang="uz"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mahsulotlar Katalogi | Confectionery Enterprise</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#261900",
+                        "on-tertiary-container": "#92918c",
+                        "secondary-fixed": "#ffdea5",
+                        "on-surface": "#1a1c1e",
+                        "surface-container-low": "#f3f3f6",
+                        "inverse-primary": "#ffb3b0",
+                        "surface-bright": "#f9f9fc",
+                        "on-primary-fixed": "#380c0d",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#8a4d4b",
+                        "primary-fixed-dim": "#ffb3b0",
+                        "tertiary": "#151612",
+                        "on-tertiary": "#ffffff",
+                        "outline-variant": "#d7c2c0",
+                        "secondary": "#775a19",
+                        "secondary-container": "#fed488",
+                        "tertiary-fixed-dim": "#c9c6c1",
+                        "tertiary-fixed": "#e5e2dc",
+                        "on-tertiary-fixed-variant": "#474743",
+                        "on-tertiary-fixed": "#1c1c18",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#e8e8ea",
+                        "on-background": "#1a1c1e",
+                        "primary": "#2f0608",
+                        "outline": "#857372",
+                        "background": "#f9f9fc",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#6e3635",
+                        "secondary-fixed-dim": "#e9c176",
+                        "on-surface-variant": "#524342",
+                        "on-secondary-container": "#785a1a",
+                        "on-secondary": "#ffffff",
+                        "surface": "#f9f9fc",
+                        "surface-variant": "#e2e2e5",
+                        "inverse-surface": "#2f3133",
+                        "tertiary-container": "#2a2a26",
+                        "surface-container-highest": "#e2e2e5",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#4a1a1a",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "inverse-on-surface": "#f0f0f3",
+                        "on-primary-container": "#c57e7b",
+                        "surface-container": "#eeeef0",
+                        "primary-fixed": "#ffdad8",
+                        "surface-dim": "#dadadc"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "section-gap": "80px",
+                        "gutter": "24px",
+                        "unit": "8px",
+                        "stack-lg": "32px",
+                        "margin-mobile": "20px",
+                        "stack-md": "16px",
+                        "margin-desktop": "64px",
+                        "container-max-width": "1280px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Playfair Display"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Playfair Display"],
+                        "title-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["56px", {"lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "headline-lg": ["40px", {"lineHeight": "48px", "fontWeight": "700"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-md": ["28px", {"lineHeight": "36px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9fc;
+        }
+        .product-card-shadow {
+            box-shadow: 0 4px 20px -5px rgba(47, 6, 8, 0.1);
+        }
+        .product-card-shadow:hover {
+            box-shadow: 0 10px 30px -5px rgba(47, 6, 8, 0.15);
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- Top Navigation Bar -->
+<nav class="sticky top-0 w-full z-50 bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-container-max-width mx-auto h-20">
+<div class="font-display-lg text-headline-md text-primary dark:text-primary-fixed uppercase tracking-wider">
+                CONFECTIONERY ENTERPRISE
+            </div>
+<div class="hidden md:flex items-center space-x-gutter">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors font-label-md text-label-md" href="#">Bosh sahifa</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors font-label-md text-label-md" href="#">Biz haqimizda</a>
+<a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary dark:border-primary-fixed pb-1 font-label-md text-label-md" href="#">Mahsulotlar</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors font-label-md text-label-md" href="#">Ishlab chiqarish</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors font-label-md text-label-md" href="#">Hamkorlik</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors font-label-md text-label-md" href="#">Kontakt</a>
+</div>
+<div class="flex items-center space-x-stack-md">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:bg-surface-container-low p-2 rounded-full transition-all">search</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:bg-surface-container-low p-2 rounded-full transition-all">shopping_cart</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:bg-surface-container-low p-2 rounded-full transition-all">account_circle</span>
+</div>
+</div>
+</nav>
+<!-- Header & Breadcrumbs Section -->
+<header class="bg-surface-container-lowest py-stack-lg border-b border-outline-variant/30">
+<div class="max-w-container-max-width mx-auto px-margin-desktop">
+<nav class="flex items-center space-x-2 text-on-surface-variant mb-stack-sm">
+<a class="font-label-sm text-label-sm hover:text-primary" href="#">Bosh sahifa</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="font-label-sm text-label-sm text-primary font-bold">Mahsulotlar</span>
+</nav>
+<h1 class="font-display-lg text-headline-lg text-primary">Mahsulotlar Katalogi</h1>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="max-w-container-max-width mx-auto px-margin-desktop py-section-gap flex flex-col md:flex-row gap-gutter">
+<!-- Sidebar Filter -->
+<aside class="w-full md:w-64 flex-shrink-0 space-y-stack-lg">
+<div class="bg-surface border border-outline-variant p-stack-md rounded-lg">
+<h3 class="font-title-lg text-title-lg text-primary mb-stack-md border-b border-outline-variant pb-2">Kategoriyalar</h3>
+<ul class="space-y-stack-sm">
+<li>
+<label class="flex items-center space-x-3 cursor-pointer group">
+<input class="w-5 h-5 rounded border-outline text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Shokolad</span>
+</label>
+</li>
+<li>
+<label class="flex items-center space-x-3 cursor-pointer group">
+<input checked="" class="w-5 h-5 rounded border-outline text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-body-md text-body-md text-primary font-medium">Pechyeni</span>
+</label>
+</li>
+<li>
+<label class="flex items-center space-x-3 cursor-pointer group">
+<input class="w-5 h-5 rounded border-outline text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Karamel</span>
+</label>
+</li>
+<li>
+<label class="flex items-center space-x-3 cursor-pointer group">
+<input class="w-5 h-5 rounded border-outline text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Vafli</span>
+</label>
+</li>
+<li>
+<label class="flex items-center space-x-3 cursor-pointer group">
+<input class="w-5 h-5 rounded border-outline text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Marmelad</span>
+</label>
+</li>
+</ul>
+</div>
+<div class="bg-surface border border-outline-variant p-stack-md rounded-lg">
+<h3 class="font-title-lg text-title-lg text-primary mb-stack-md border-b border-outline-variant pb-2">Og'irligi</h3>
+<div class="grid grid-cols-2 gap-2">
+<button class="px-3 py-2 border border-outline-variant text-label-md font-label-md rounded hover:bg-primary-container hover:text-on-primary-container transition-all">0.5 kg</button>
+<button class="px-3 py-2 border border-primary bg-primary-container text-on-primary-container text-label-md font-label-md rounded">1 kg</button>
+<button class="px-3 py-2 border border-outline-variant text-label-md font-label-md rounded hover:bg-primary-container hover:text-on-primary-container transition-all">2 kg+</button>
+<button class="px-3 py-2 border border-outline-variant text-label-md font-label-md rounded hover:bg-primary-container hover:text-on-primary-container transition-all">Sanoqli</button>
+</div>
+</div>
+<div class="bg-surface border border-outline-variant p-stack-md rounded-lg">
+<h3 class="font-title-lg text-title-lg text-primary mb-stack-md border-b border-outline-variant pb-2">Narx oralig'i</h3>
+<div class="space-y-4">
+<input class="w-full h-1.5 bg-outline-variant rounded-lg appearance-none cursor-pointer accent-primary" max="500000" min="10000" step="5000" type="range"/>
+<div class="flex justify-between text-label-sm font-label-sm text-on-surface-variant">
+<span>10,000 so'm</span>
+<span>500,000 so'm</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Product Grid Cluster -->
+<section class="flex-1">
+<!-- Search and Sort Bar -->
+<div class="flex flex-col md:flex-row justify-between items-center mb-stack-lg gap-stack-md">
+<div class="relative w-full md:w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface border border-outline-variant rounded-full focus:ring-2 focus:ring-primary focus:border-primary outline-none text-body-md font-body-md" placeholder="Mahsulot qidirish..." type="text"/>
+</div>
+<div class="flex items-center space-x-stack-sm w-full md:w-auto">
+<span class="font-label-md text-label-md text-on-surface-variant whitespace-nowrap">Saralash:</span>
+<select class="w-full md:w-auto border border-outline-variant bg-surface rounded px-4 py-2 font-label-md text-label-md outline-none focus:ring-1 focus:ring-primary">
+<option>Mashhurligi bo'yicha</option>
+<option>Narxi: Arzonidan qimmatiga</option>
+<option>Narxi: Qimmatidan arzoniga</option>
+<option>Yangi mahsulotlar</option>
+</select>
+</div>
+</div>
+<!-- Main Product Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Product Card 1 -->
+<article class="bg-surface border border-outline-variant rounded-lg overflow-hidden flex flex-col product-card-shadow transition-all group">
+<div class="h-64 overflow-hidden relative">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A professional high-end studio shot of a luxurious chocolate assortment box on a clean, creamy white background. The packaging is a deep burgundy cardboard with elegant gold foil lettering, reflecting a premium corporate confectionery brand. Soft, cinematic top lighting highlights the rich textures of individual chocolate truffles arranged neatly inside. The overall aesthetic is clean, structured, and prestigious, suitable for an enterprise B2B catalog." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB52b573iiPPkW8tV5IBrSQ067q3Zmh1ANf3Doln67d0G2IJIX0Tz_1QXdtHXC7Bc5SO8cJFFCjI2vHxOUyw2--vP5KfYMOqc07w7yqatmbBUBap-K8GXg9GvQB5XpYnAm0VGsvI9dU0f1T5wGRGQByCoRkrFLXU4mJNVQ3gXKcTA7iQGhlpW35aHb8nHW-wVCMl48NVmzsfVaLO1s48bnCSQxPKsEFK-9W2QJnhUMj3XRVGjzQAge"/>
+<span class="absolute top-4 left-4 bg-secondary-container text-on-secondary-container text-label-sm font-label-sm px-3 py-1 rounded-full uppercase">Premium</span>
+</div>
+<div class="p-stack-md flex flex-col flex-1">
+<h3 class="font-title-lg text-title-lg text-primary mb-1">Premium Shokolad To'plami</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 line-clamp-2">Sutli va qora shokoladdan tayyorlangan, ichida yong'oqli krem bilan to'ldirilgan assorti to'plami.</p>
+<div class="mt-auto space-y-1 border-t border-outline-variant/30 pt-3">
+<div class="flex items-center text-label-md font-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] mr-2">scale</span>
+                                Og'irligi: 1 kg
+                            </div>
+<div class="flex items-center text-label-md font-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] mr-2">inventory_2</span>
+                                Qadoqlash: Karton quti
+                            </div>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<span class="text-primary font-bold text-title-lg">125,000 so'm</span>
+<button class="bg-primary text-on-primary px-4 py-2 rounded font-label-md text-label-md hover:opacity-90 active:scale-[0.98] transition-all">Batafsil</button>
+</div>
+</div>
+</article>
+<!-- Product Card 2 -->
+<article class="bg-surface border border-outline-variant rounded-lg overflow-hidden flex flex-col product-card-shadow transition-all group">
+<div class="h-64 overflow-hidden relative">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A clean, minimalist product photograph of buttery shortbread biscuits displayed on a polished gray stone surface. The lighting is bright and industrial-chic, typical of a high-quality manufacturing facility catalog. The biscuits are perfectly uniform, showcasing artisanal precision. Beside them lies their sleek, professional plastic wrapping with minimal typography and clear windows showing the golden-brown texture of the products. Corporate elegance and food safety standards are emphasized through the clinical yet inviting presentation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAusZRv8IyRrCbwvZrPTJFUtbb06EA3_nP5rA59zMUNw_oXGmHWCbYUdqYpTHUsI3DgJ_hLfoztyFLSvmtqZyavBCQzLJ9GC2-Qw4v4YpYF7YfOXrYJUY6vAwMcj97oaxdQqY9QXftDhJJ4O2pFPYTEV6ANNtMbt1LQbx_ETuZQf53C9w5OyE4Vpdfm3y3OYwXVNPg8-lBSpE724_WwGegCXqAQAsXumILRPYRn_RlKvaMrxDahxlNp"/>
+</div>
+<div class="p-stack-md flex flex-col flex-1">
+<h3 class="font-title-lg text-title-lg text-primary mb-1">Oltin Kuz Pechyenilari</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 line-clamp-2">Sariyog'li xamirdan tayyorlangan, o'ziga xos mayin ta'mga ega klassik pechyenilar to'plami.</p>
+<div class="mt-auto space-y-1 border-t border-outline-variant/30 pt-3">
+<div class="flex items-center text-label-md font-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] mr-2">scale</span>
+                                Og'irligi: 0.5 kg
+                            </div>
+<div class="flex items-center text-label-md font-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] mr-2">inventory_2</span>
+                                Qadoqlash: Yumshoq paket
+                            </div>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<span class="text-primary font-bold text-title-lg">45,000 so'm</span>
+<button class="bg-primary text-on-primary px-4 py-2 rounded font-label-md text-label-md hover:opacity-90 active:scale-[0.98] transition-all">Batafsil</button>
+</div>
+</div>
+</article>
+<!-- Product Card 3 -->
+<article class="bg-surface border border-outline-variant rounded-lg overflow-hidden flex flex-col product-card-shadow transition-all group">
+<div class="h-64 overflow-hidden relative">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Detailed macro shot of artisanal fruit marmalade cubes dusted with fine sugar crystals. Each cube has a vibrant, jewel-like translucence in shades of amber, ruby, and emerald. The background is a clean, bright laboratory-style setting, suggesting high hygiene standards and manufacturing excellence. The focus is sharp on the texture of the sugar grains, creating a sophisticated editorial look. The color palette is dominated by natural fruit tones balanced against a neutral, high-key environmental glow." src="https://lh3.googleusercontent.com/aida-public/AB6AXuACKrOAUQ40TgGUTE3l-8qvqLqSa4emDwclNyb-z3_fm52nPnr2avs1lRss5zFYmoymKv1ShoU-TIVanOf_lcTaiscPYyl9CTWeNgt_hqL7oITvd1fkuKT0bDJWcFGzWk497ggpaNBCDx0NVxbrqKb6dBVYNE3fa_VQ6OGv_F4qz8LTdN0XNLs60bAN-feTkAMk_hDJ0AqMpAkAWt6CXJt25fB3CBkXyAIxocgClKSQ3UB1wu2CzujM"/>
+<span class="absolute top-4 left-4 bg-tertiary-fixed text-on-tertiary-fixed text-label-sm font-label-sm px-3 py-1 rounded-full uppercase">Yangi</span>
+</div>
+<div class="p-stack-md flex flex-col flex-1">
+<h3 class="font-title-lg text-title-lg text-primary mb-1">Meva Bog'i Marmeladi</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 line-clamp-2">Tabiiy meva sharbatlari va pektin asosida tayyorlangan, shakarga belangan rangli marmeladlar.</p>
+<div class="mt-auto space-y-1 border-t border-outline-variant/30 pt-3">
+<div class="flex items-center text-label-md font-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] mr-2">scale</span>
+                                Og'irligi: 1.5 kg
+                            </div>
+<div class="flex items-center text-label-md font-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] mr-2">inventory_2</span>
+                                Qadoqlash: Plastik quti
+                            </div>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<span class="text-primary font-bold text-title-lg">78,000 so'm</span>
+<button class="bg-primary text-on-primary px-4 py-2 rounded font-label-md text-label-md hover:opacity-90 active:scale-[0.98] transition-all">Batafsil</button>
+</div>
+</div>
+</article>
+<!-- Repeatable Cards for Grid completeness -->
+<!-- Product Card 4 -->
+<article class="bg-surface border border-outline-variant rounded-lg overflow-hidden flex flex-col product-card-shadow transition-all group">
+<div class="h-64 overflow-hidden relative">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Corporate photography of a stack of premium chocolate wafers. The wafers have a crisp, multi-layered texture visible in the cross-section, with rich dark chocolate coating. They are arranged on a minimalist white ceramic platter. The lighting is soft and diffuse, emphasizing the product's quality and consistency. The scene is shot from a low angle to give the product an authoritative and appealing presence. High-end editorial style for a corporate food production catalog." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXG4rXbStCu0jz8ngMCqUYzyuN4xqZgJ5-iH1VBUgjgXkdfxPcMIJP3N1Dkqb09d8o3-LRxAxHkjZevw-aKikeL4sYf5sHQtlzcG6GYX7k5RAufeCXcWC-bfS_ccyHawXbXDmGutLE0QhnqtHQGqEZoBLXUyh2hyRnuGrHvm64c3R6d9Iz4gV-ERv-IURGlNIhDPcC7E-vMWZd-iLHyOBb9uG_bPnaAVqj5UFAoIgS-okzz-oWmLek"/>
+</div>
+<div class="p-stack-md flex flex-col flex-1">
+<h3 class="font-title-lg text-title-lg text-primary mb-1">Shokoladli Vafli To'plami</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 line-clamp-2">Beshta qavatdan iborat, har bir qavati quyuq shokoladli krem bilan qoplangan qarsildoq vaflilar.</p>
+<div class="mt-auto space-y-1 border-t border-outline-variant/30 pt-3">
+<div class="flex items-center text-label-md font-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] mr-2">scale</span>
+                                Og'irligi: 1 kg
+                            </div>
+<div class="flex items-center text-label-md font-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] mr-2">inventory_2</span>
+                                Qadoqlash: Karton quti
+                            </div>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<span class="text-primary font-bold text-title-lg">62,000 so'm</span>
+<button class="bg-primary text-on-primary px-4 py-2 rounded font-label-md text-label-md hover:opacity-90 active:scale-[0.98] transition-all">Batafsil</button>
+</div>
+</div>
+</article>
+<!-- Product Card 5 -->
+<article class="bg-surface border border-outline-variant rounded-lg overflow-hidden flex flex-col product-card-shadow transition-all group">
+<div class="h-64 overflow-hidden relative">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="High-quality close-up of wrapped hard candies or caramels with transparent colorful wrappers. The candies are scattered artfully on a clean white surface with sharp shadows indicating bright, direct lighting. The visual style is crisp, clean, and commercial, highlighting the variety of flavors through a spectrum of vibrant translucent colors. The image conveys a sense of high-volume manufacturing perfection and rigorous quality control in a modern confectionery plant." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEFcg6LvR7KSI9EI7Ef12VHDwbnl1fjwXTb8uLfe96gO0PIXUkLZByc1-XDqvf-eZR49N0AA_4g_xFhfSeYH-RQJqfA7MbgtNiB1g7lukZ3ZvZklRPo8SXfmj0bUlR514QrNiVfzOWiU_9UUFG8LJVy9eG-iHgz_Iy7jLFmPY4BzU-4m1FJxyxQEGn2FMs5J74xOZV-JithW-yUHH2TeWrGRjkwyDfV-qeyQ1lV1uLDnhCxPuCPpsq"/>
+</div>
+<div class="p-stack-md flex flex-col flex-1">
+<h3 class="font-title-lg text-title-lg text-primary mb-1">Meva Shodalari Karamel</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 line-clamp-2">Turli meva ta'mlariga ega bo'lgan muzdek karamel shirinliklari. Har bir dona alohida qadoqlangan.</p>
+<div class="mt-auto space-y-1 border-t border-outline-variant/30 pt-3">
+<div class="flex items-center text-label-md font-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] mr-2">scale</span>
+                                Og'irligi: 2 kg
+                            </div>
+<div class="flex items-center text-label-md font-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] mr-2">inventory_2</span>
+                                Qadoqlash: Katta paket
+                            </div>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<span class="text-primary font-bold text-title-lg">54,000 so'm</span>
+<button class="bg-primary text-on-primary px-4 py-2 rounded font-label-md text-label-md hover:opacity-90 active:scale-[0.98] transition-all">Batafsil</button>
+</div>
+</div>
+</article>
+<!-- Product Card 6 -->
+<article class="bg-surface border border-outline-variant rounded-lg overflow-hidden flex flex-col product-card-shadow transition-all group">
+<div class="h-64 overflow-hidden relative">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Elegant presentation of oatmeal cookies with chocolate chips and raisins, placed on a designer wooden board. The aesthetic is warm and inviting yet remains strictly professional with a shallow depth of field and soft natural lighting. The scene suggests a home-style recipe scaled up with industrial precision. The environment is minimalist, using earthy tones of brown and cream to align with the product's natural ingredients and high-end brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiUYztgPO455IGK6G0v1XM7gzFhvgMexIeKe4MQCAGgCb8_HGAse9TICVlbK-HE2L-bDv-SGGwN8E_7JB97w8dTfQoUUsyqOqb4LY10R5gChHpAOZrDZCNY_CiBaeg_2uMey80ZL5sodK5UHZWvTr0-AdcAU4AYedkXM0Wo52UgTY3HL5EygUdltJjWq-JOcBLpueMRQA3EMN3kDJm0-FxpTCZNwiFbD266E-055Tefs6Tz9zfk9n9"/>
+</div>
+<div class="p-stack-md flex flex-col flex-1">
+<h3 class="font-title-lg text-title-lg text-primary mb-1">Suli Yormasi Pechyenisi</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 line-clamp-2">Sog'lom turmush tarzi uchun mos keluvchi, suli yormasi va mayiz qo'shilgan klassik pechyenilar.</p>
+<div class="mt-auto space-y-1 border-t border-outline-variant/30 pt-3">
+<div class="flex items-center text-label-md font-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] mr-2">scale</span>
+                                Og'irligi: 0.8 kg
+                            </div>
+<div class="flex items-center text-label-md font-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] mr-2">inventory_2</span>
+                                Qadoqlash: Karton quti
+                            </div>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<span class="text-primary font-bold text-title-lg">39,000 so'm</span>
+<button class="bg-primary text-on-primary px-4 py-2 rounded font-label-md text-label-md hover:opacity-90 active:scale-[0.98] transition-all">Batafsil</button>
+</div>
+</div>
+</article>
+</div>
+<!-- Pagination -->
+<nav class="mt-section-gap flex justify-center items-center space-x-2">
+<button class="w-10 h-10 flex items-center justify-center rounded border border-outline-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded bg-primary text-on-primary font-bold">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded border border-outline-variant hover:bg-surface-container-high transition-colors font-label-md text-label-md">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded border border-outline-variant hover:bg-surface-container-high transition-colors font-label-md text-label-md">3</button>
+<span class="px-2 text-on-surface-variant">...</span>
+<button class="w-10 h-10 flex items-center justify-center rounded border border-outline-variant hover:bg-surface-container-high transition-colors font-label-md text-label-md">12</button>
+<button class="w-10 h-10 flex items-center justify-center rounded border border-outline-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</button>
+</nav>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full pt-section-gap pb-stack-lg bg-primary dark:bg-tertiary-container">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-container-max-width mx-auto px-margin-desktop">
+<div class="col-span-1 md:col-span-1">
+<div class="font-display-lg text-headline-md text-on-primary dark:text-on-tertiary-container mb-stack-md">
+                    CONFECTIONERY ENTERPRISE
+                </div>
+<p class="text-on-primary/80 dark:text-on-tertiary-container/80 font-body-md text-body-md leading-relaxed">
+                    Bizning korxona 1998-yildan buyon eng yuqori sifatli shirinliklar ishlab chiqarib keladi. Har bir mahsulot - bizning iftixorimiz.
+                </p>
+</div>
+<div class="flex flex-col space-y-stack-sm">
+<h4 class="font-label-sm text-label-sm uppercase text-on-primary/60 tracking-widest mb-2">Ma'lumotlar</h4>
+<a class="text-on-primary/80 dark:text-on-tertiary-container/80 hover:text-on-primary hover:underline underline-offset-4 transition-all font-body-md text-body-md" href="#">Biz haqimizda</a>
+<a class="text-on-primary/80 dark:text-on-tertiary-container/80 hover:text-on-primary hover:underline underline-offset-4 transition-all font-body-md text-body-md" href="#">Ishlab chiqarish</a>
+<a class="text-on-primary/80 dark:text-on-tertiary-container/80 hover:text-on-primary hover:underline underline-offset-4 transition-all font-body-md text-body-md" href="#">Sertifikatlar</a>
+<a class="text-on-primary/80 dark:text-on-tertiary-container/80 hover:text-on-primary hover:underline underline-offset-4 transition-all font-body-md text-body-md" href="#">Vakansiyalar</a>
+</div>
+<div class="flex flex-col space-y-stack-sm">
+<h4 class="font-label-sm text-label-sm uppercase text-on-primary/60 tracking-widest mb-2">Huquqiy</h4>
+<a class="text-on-primary/80 dark:text-on-tertiary-container/80 hover:text-on-primary hover:underline underline-offset-4 transition-all font-body-md text-body-md" href="#">Maxfiylik siyosati</a>
+<a class="text-on-primary/80 dark:text-on-tertiary-container/80 hover:text-on-primary hover:underline underline-offset-4 transition-all font-body-md text-body-md" href="#">Foydalanish shartlari</a>
+<a class="text-on-primary/80 dark:text-on-tertiary-container/80 hover:text-on-primary hover:underline underline-offset-4 transition-all font-body-md text-body-md" href="#">Yetkazib berish</a>
+</div>
+<div class="flex flex-col space-y-stack-sm">
+<h4 class="font-label-sm text-label-sm uppercase text-on-primary/60 tracking-widest mb-2">Kontakt</h4>
+<p class="text-on-primary/80 font-body-md text-body-md">Toshkent sh., Chilonzor tumani, 5-dahada.</p>
+<p class="text-on-primary/80 font-body-md text-body-md">+998 71 200 00 00</p>
+<div class="flex space-x-4 mt-4">
+<span class="material-symbols-outlined text-on-primary cursor-pointer hover:opacity-70">face_nod</span>
+<span class="material-symbols-outlined text-on-primary cursor-pointer hover:opacity-70">alternate_email</span>
+<span class="material-symbols-outlined text-on-primary cursor-pointer hover:opacity-70">share</span>
+</div>
+</div>
+</div>
+<div class="max-w-container-max-width mx-auto px-margin-desktop border-t border-on-primary/10 mt-stack-lg pt-stack-lg">
+<p class="text-on-primary/60 font-label-sm text-label-sm uppercase text-center">
+                © 2024 Confectionery Enterprise. Barcha huquqlar himoyalangan.
+            </p>
+</div>
+</footer>
+<script>
+        // Simple micro-interaction for active page highlighting
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                // If it's the product page link we stay on this page logic
+                if (link.innerText === 'Mahsulotlar') {
+                    // Just visual feedback
+                    link.style.transform = 'scale(0.98)';
+                    setTimeout(() => link.style.transform = 'scale(1)', 200);
+                }
+            });
+        });
+
+        // Filter button toggle logic example
+        const filterButtons = document.querySelectorAll('button.border-outline-variant');
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Simplified toggle for demonstration
+                if (!btn.classList.contains('bg-primary-container')) {
+                   // Visual feedback of selection
+                   btn.classList.remove('border-outline-variant');
+                   btn.classList.add('border-primary', 'bg-primary-container', 'text-on-primary-container');
+                } else {
+                   btn.classList.add('border-outline-variant');
+                   btn.classList.remove('border-primary', 'bg-primary-container', 'text-on-primary-container');
+                }
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,109 @@
+from django.conf import settings
+from django.db import models
+
+
+class Coupon(models.Model):
+    code = models.CharField(max_length=50, unique=True)
+    discount_percent = models.DecimalField(max_digits=5, decimal_places=2, default=0)
+    discount_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    min_order_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    max_uses = models.PositiveIntegerField(default=0)
+    used_count = models.PositiveIntegerField(default=0)
+    is_active = models.BooleanField(default=True)
+    expires_at = models.DateTimeField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.code
+
+    @property
+    def is_valid(self):
+        from django.utils import timezone
+        if not self.is_active:
+            return False
+        if self.expires_at and self.expires_at < timezone.now():
+            return False
+        if self.max_uses > 0 and self.used_count >= self.max_uses:
+            return False
+        return True
+
+
+class Address(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='addresses')
+    title = models.CharField(max_length=100, default='Asosiy manzil')
+    full_name = models.CharField(max_length=255)
+    phone = models.CharField(max_length=20)
+    city = models.CharField(max_length=100)
+    district = models.CharField(max_length=100, blank=True, default='')
+    street = models.CharField(max_length=255)
+    building = models.CharField(max_length=50, blank=True, default='')
+    apartment = models.CharField(max_length=50, blank=True, default='')
+    landmark = models.CharField(max_length=255, blank=True, default='')
+    is_default = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-is_default', '-created_at']
+
+    def __str__(self):
+        return f'{self.title}: {self.city}, {self.street}'
+
+
+class Order(models.Model):
+    STATUS_CHOICES = [
+        ('pending', 'Kutilmoqda'),
+        ('confirmed', 'Tasdiqlandi'),
+        ('processing', 'Ishlab chiqarilmoqda'),
+        ('packaging', 'Qadoqlanmoqda'),
+        ('delivering', 'Yetkazilmoqda'),
+        ('delivered', 'Yetkazib berilgan'),
+        ('cancelled', 'Bekor qilindi'),
+        ('refunded', 'Qaytarilgan'),
+    ]
+    PAYMENT_CHOICES = [
+        ('cash', 'Naqd pul'),
+        ('card', 'Plastik karta'),
+        ('click', 'Click'),
+        ('payme', 'Payme'),
+        ('uzum', 'Uzum Bank'),
+    ]
+
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='orders')
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
+    full_name = models.CharField(max_length=255)
+    phone = models.CharField(max_length=20)
+    address = models.ForeignKey(Address, on_delete=models.SET_NULL, null=True, blank=True)
+    address_text = models.TextField(default='')
+    landmark = models.CharField(max_length=255, blank=True, default='')
+    notes = models.TextField(blank=True, default='')
+    payment_method = models.CharField(max_length=20, choices=PAYMENT_CHOICES, default='cash')
+    subtotal = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    delivery_fee = models.DecimalField(max_digits=10, decimal_places=2, default=15000)
+    discount_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    tax_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    total_amount = models.DecimalField(max_digits=10, decimal_places=2)
+    coupon = models.ForeignKey(Coupon, on_delete=models.SET_NULL, null=True, blank=True)
+    tracking_number = models.CharField(max_length=100, blank=True, default='')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return f'Order #{self.pk} - {self.full_name}'
+
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')
+    product = models.ForeignKey('products.Product', on_delete=models.CASCADE)
+    variant = models.ForeignKey('products.ProductVariant', on_delete=models.SET_NULL, null=True, blank=True)
+    quantity = models.PositiveIntegerField(default=1)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return f'{self.product.name} x {self.quantity}'
+
+    @property
+    def subtotal(self):
+        return self.price * self.quantity
