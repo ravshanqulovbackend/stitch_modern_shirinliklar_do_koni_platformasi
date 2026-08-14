@@ -19,11 +19,12 @@ class Review(models.Model):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-        self._update_product_rating()
+        self.recalculate_product_rating(self.product)
 
-    def _update_product_rating(self):
+    @staticmethod
+    def recalculate_product_rating(product):
         from django.db.models import Avg
-        agg = Review.objects.filter(product=self.product).aggregate(avg=Avg('rating'))
-        self.product.rating = round(agg['avg'] or 0, 1)
-        self.product.review_count = Review.objects.filter(product=self.product).count()
-        self.product.save(update_fields=['rating', 'review_count'])
+        agg = Review.objects.filter(product=product).aggregate(avg=Avg('rating'))
+        product.rating = round(agg['avg'] or 0, 1)
+        product.review_count = Review.objects.filter(product=product).count()
+        product.save(update_fields=['rating', 'review_count'])

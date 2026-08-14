@@ -1,6 +1,7 @@
 from rest_framework import generics, status, permissions, filters
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.exceptions import PermissionDenied, ValidationError
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import get_user_model
 from .serializers import UserSerializer, RegisterSerializer, ChangePasswordSerializer
@@ -33,6 +34,15 @@ class ProfileView(generics.RetrieveUpdateAPIView):
 
     def get_object(self):
         return self.request.user
+
+    def perform_update(self, serializer):
+        user = serializer.save()
+        # Django admin orqali berilgan rol (pending_role) foydalanuvchi o'zi haqida
+        # to'liq ma'lumot (ism, familiya, telefon, rasm) kiritgandan keyingina kuchga kiradi.
+        if user.pending_role and user.first_name and user.last_name and user.phone and user.avatar:
+            user.role = user.pending_role
+            user.pending_role = ''
+            user.save(update_fields=['role', 'pending_role'])
 
 
 class ChangePasswordView(APIView):
@@ -69,7 +79,16 @@ class UserListView(generics.ListAPIView):
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
 
 
-class AdminUserDetailView(generics.RetrieveUpdateAPIView):
+def _guard_actor_vs_target(actor, target, new_role=None):
+    """Admin/superadmin ierarxiyasi: hech kim o'zini o'zgartira/o'chira olmaydi,
+    va oddiy admin superadminga (mavjud yoki bo'lajak) tega olmaydi."""
+    if target.pk == actor.pk:
+        raise PermissionDenied("O'zingizga nisbatan bu amalni bajara olmaysiz.")
+    if actor.role == 'admin' and (target.role == 'superadmin' or new_role == 'superadmin'):
+        raise PermissionDenied("Superadmin bilan bog'liq amalni faqat superadmin bajara oladi.")
+
+
+class AdminUserDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [IsAdminRole]
@@ -78,6 +97,15 @@ class AdminUserDetailView(generics.RetrieveUpdateAPIView):
         user = self.get_object()
         role = request.data.get('role')
         if role and role in dict(User.ROLE_CHOICES):
+            _guard_actor_vs_target(request.user, user, new_role=role)
             user.role = role
             user.save()
         return super().update(request, *args, **kwargs)
+
+    def perform_destroy(self, instance):
+        _guard_actor_vs_target(self.request.user, instance)
+        if instance.role == 'superadmin' and not User.objects.filter(role='superadmin').exclude(pk=instance.pk).exists():
+            raise PermissionDenied("Oxirgi superadminni o'chirib bo'lmaydi.")
+        if instance.orders.exists():
+            raise ValidationError("Buyurtmalari mavjud foydalanuvchini o'chirib bo'lmaydi.")
+        instance.delete()

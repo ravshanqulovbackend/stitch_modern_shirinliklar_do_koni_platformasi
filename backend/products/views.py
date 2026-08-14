@@ -1,3 +1,4 @@
+from django.forms.models import model_to_dict
 from rest_framework import viewsets, filters, status, permissions
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -5,9 +6,10 @@ from django_filters.rest_framework import DjangoFilterBackend
 from .models import Product, Brand
 from .serializers import (
     ProductListSerializer, ProductDetailSerializer, ProductRelatedSerializer,
-    BrandSerializer,
+    ProductAdminSerializer, BrandSerializer,
 )
 from users.permissions import IsAdminRole
+from common.utils import log_activity, diff_instance, notify_superadmins
 
 
 class BrandViewSet(viewsets.ReadOnlyModelViewSet):
@@ -64,3 +66,35 @@ class ProductViewSet(viewsets.ReadOnlyModelViewSet):
         products = Product.objects.filter(is_active=True).order_by('-created_at')[:12]
         serializer = ProductListSerializer(products, many=True)
         return Response(serializer.data)
+
+
+class AdminProductViewSet(viewsets.ModelViewSet):
+    queryset = Product.objects.all().select_related('category', 'brand')
+    serializer_class = ProductAdminSerializer
+    permission_classes = [IsAdminRole]
+    lookup_field = 'slug'
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
+    filterset_fields = ['category', 'brand', 'is_active']
+    search_fields = ['name', 'slug', 'sku']
+    ordering_fields = ['name', 'price', 'stock', 'created_at']
+
+    def perform_create(self, serializer):
+        instance = serializer.save()
+        log_activity(self.request.user, 'created', instance, 'Product')
+
+    def perform_update(self, serializer):
+        before = model_to_dict(serializer.instance)
+        # slug yaratilgandan keyin o'zgartirilmaydi — havolalar/bookmark'lar buzilmasin
+        instance = serializer.save(slug=serializer.instance.slug)
+        log_activity(self.request.user, 'updated', instance, 'Product', diff_instance(before, instance))
+
+    def perform_destroy(self, instance):
+        actor = self.request.user
+        name = instance.name
+        log_activity(actor, 'deleted', instance, 'Product')
+        instance.delete()
+        notify_superadmins(
+            "Mahsulot o'chirildi",
+            f'{actor.get_full_name() or actor.username} "{name}" nomli mahsulotni butunlay o\'chirdi.',
+            exclude_user=actor,
+        )

@@ -9,6 +9,8 @@ admin_router = DefaultRouter()
 admin_router.register('', views.AdminNewsViewSet, basename='admin-news')
 
 urlpatterns = [
-    path('', include(router.urls)),
+    # admin/ BIRINCHI — aks holda "admin" so'zi pastdagi slug-detail marshrutiga tushib
+    # qolib, uni yangilik slug'i deb noto'g'ri talqin qiladi (404).
     path('admin/', include(admin_router.urls)),
+    path('', include(router.urls)),
 ]

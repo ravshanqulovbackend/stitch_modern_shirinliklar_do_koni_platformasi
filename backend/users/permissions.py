@@ -12,3 +12,13 @@ class IsAdminRole(permissions.BasePermission):
             and request.user.is_authenticated
             and request.user.is_admin_user
         )
+
+
+class IsSuperAdminRole(permissions.BasePermission):
+    """Faqat superadmin role'li foydalanuvchilar uchun (masalan, faoliyat jurnali)."""
+    def has_permission(self, request, view):
+        return (
+            request.user
+            and request.user.is_authenticated
+            and request.user.is_superadmin
+        )

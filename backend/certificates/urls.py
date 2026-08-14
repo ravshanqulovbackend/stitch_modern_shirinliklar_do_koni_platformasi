@@ -9,6 +9,8 @@ admin_router = DefaultRouter()
 admin_router.register('', views.AdminCertificateViewSet, basename='admin-certificate')
 
 urlpatterns = [
-    path('', include(router.urls)),
+    # admin/ BIRINCHI — aks holda "admin" so'zi pastdagi detail marshrutiga tushib
+    # qolib, uni sertifikat ID'si deb noto'g'ri talqin qiladi (404).
     path('admin/', include(admin_router.urls)),
+    path('', include(router.urls)),
 ]

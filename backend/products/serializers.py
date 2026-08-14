@@ -79,6 +79,31 @@ class ProductDetailSerializer(serializers.ModelSerializer):
         )
 
 
+class ProductAdminSerializer(serializers.ModelSerializer):
+    """
+    Admin panel uchun ATAYLAB alohida serializer — ProductList/DetailSerializer'dagi
+    `image = FlexibleImageField(read_only=True)` yozishga to'sqinlik qiladi, va ular
+    list/detail bo'yicha bo'lingan bo'lib, bitta yozish formasiga mos kelmaydi.
+    `image` shu yerda FlexibleImageField, lekin read_only=True SIZ — yozish uchun ochiq.
+    """
+    image = FlexibleImageField()
+    category_name = serializers.CharField(source='category.name', read_only=True)
+    brand_name = serializers.CharField(source='brand.name', read_only=True, default='')
+    discount_percent = serializers.IntegerField(read_only=True)
+    is_in_stock = serializers.BooleanField(read_only=True)
+
+    class Meta:
+        model = Product
+        fields = (
+            'id', 'name', 'slug', 'description', 'price', 'old_price',
+            'discount_percent', 'image', 'ingredients', 'badge', 'sku', 'stock',
+            'is_active', 'is_popular', 'is_featured', 'rating', 'review_count',
+            'category', 'category_name', 'brand', 'brand_name', 'is_in_stock',
+            'created_at', 'updated_at',
+        )
+        read_only_fields = ('id', 'rating', 'review_count', 'created_at', 'updated_at')
+
+
 class ProductRelatedSerializer(serializers.ModelSerializer):
     category_name = serializers.CharField(source='category.name', read_only=True)
     average_rating = serializers.FloatField(read_only=True)

@@ -1,14 +1,20 @@
 from rest_framework import generics, permissions
 from .models import Company, PartnershipRequest
 from .serializers import CompanySerializer, PartnershipRequestSerializer
-from users.permissions import IsAdminRole
+from users.permissions import IsAdminRole, IsSuperAdminRole
 
 
-class CompanyView(generics.RetrieveAPIView):
+class CompanyView(generics.RetrieveUpdateAPIView):
+    """"Biz haqimizda" ma'lumoti — hammaga ochiq ko'rish, faqat superadmin tahrirlashi mumkin."""
     serializer_class = CompanySerializer
 
     def get_object(self):
         return Company.load()
+
+    def get_permissions(self):
+        if self.request.method in permissions.SAFE_METHODS:
+            return [permissions.AllowAny()]
+        return [IsSuperAdminRole()]
 
 
 class PartnershipRequestCreateView(generics.CreateAPIView):

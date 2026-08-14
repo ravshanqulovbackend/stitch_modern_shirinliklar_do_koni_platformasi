@@ -1,4 +1,36 @@
+from django.conf import settings
 from django.db import models
+
+
+class ActivityLog(models.Model):
+    ACTION_CHOICES = [
+        ('created', "Yaratildi"),
+        ('updated', "Yangilandi"),
+        ('deleted', "O'chirildi"),
+    ]
+
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True,
+        related_name='activity_logs',
+    )
+    # User keyinchalik o'chirilsa ham "kim qilgani" ko'rinib turishi uchun yozuv
+    # vaqtidagi F.I.Sh/username snapshot (FK null bo'lib qolganda ham o'qiladi).
+    actor_display = models.CharField(max_length=150)
+    action = models.CharField(max_length=10, choices=ACTION_CHOICES)
+    model_name = models.CharField(max_length=50)
+    object_id = models.PositiveIntegerField()
+    object_repr = models.CharField(max_length=255)
+    # Yangilanishda o'zgargan maydonlar: {"price": ["45000.00", "52000.00"], ...}
+    changes = models.JSONField(default=dict, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = "faoliyat jurnali yozuvi"
+        verbose_name_plural = "faoliyat jurnali"
+
+    def __str__(self):
+        return f'{self.actor_display} — {self.get_action_display()} — {self.model_name} #{self.object_id}'
 
 
 class SiteSettings(models.Model):

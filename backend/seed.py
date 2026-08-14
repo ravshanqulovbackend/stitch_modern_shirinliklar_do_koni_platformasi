@@ -18,12 +18,20 @@ from favorites.models import Favorite
 
 User = get_user_model()
 
-# ─── Create Admin ──────────────────────────────────────────────
+# ─── Create Superadmin (sex/zavod egasi) ───────────────────────
 if not User.objects.filter(username='admin').exists():
-    User.objects.create_superuser('admin', 'admin@shirinliklar.uz', 'admin123', phone='+998901234567')
-    print('Admin user created (admin / admin123)')
+    User.objects.create_superuser('admin', 'admin@shirinliklar.uz', 'admin123', phone='+998901234567', role='superadmin')
+    print('Superadmin user created (admin / admin123)')
 
-# ─── Create Demo Users ────────────────────────────────────────
+# ─── Create demo Admin (hodim) ──────────────────────────────────
+if not User.objects.filter(username='admin1').exists():
+    admin1 = User.objects.create_user(
+        'admin1', 'admin1@shirinliklar.uz', 'admin1234',
+        first_name='Farrux', last_name='Nazarov', phone='+998901230000', role='admin',
+    )
+    print('Admin (hodim) user created (admin1 / admin1234)')
+
+# ─── Create Demo Users (online mijozlar — staff roli) ──────────
 demo_users = [
     {'username': 'user1', 'email': 'user1@example.com', 'first_name': 'Aziz', 'last_name': 'Karimov', 'phone': '+998901112233', 'password': 'user1234'},
     {'username': 'user2', 'email': 'user2@example.com', 'first_name': 'Nodira', 'last_name': 'Aliyeva', 'phone': '+998902223344', 'password': 'user1234'},
@@ -492,7 +500,7 @@ if Order.objects.count() == 0:
             total_amount=total,
             created_at=now - timedelta(days=random.randint(0, 60)),
         )
-        OrderItem.objects.create(order=order, product=product, quantity=qty, price=product.price)
+        OrderItem.objects.create(order=order, product=product, product_name=product.name, quantity=qty, price=product.price)
     print('20 demo orders created')
 else:
     print('Orders already exist, skipping')

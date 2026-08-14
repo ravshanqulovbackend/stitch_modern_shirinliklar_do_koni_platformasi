@@ -16,18 +16,20 @@ class OrderItemSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = OrderItem
-        fields = ('id', 'product', 'variant', 'quantity', 'price', 'subtotal')
+        fields = ('id', 'product', 'product_name', 'variant', 'quantity', 'price', 'subtotal')
 
 
 class OrderSerializer(serializers.ModelSerializer):
     items = OrderItemSerializer(many=True, read_only=True)
     status_display = serializers.CharField(source='get_status_display', read_only=True)
     payment_display = serializers.CharField(source='get_payment_method_display', read_only=True)
+    user = serializers.IntegerField(source='user_id', read_only=True)
+    username = serializers.CharField(source='user.username', read_only=True)
 
     class Meta:
         model = Order
         fields = (
-            'id', 'status', 'status_display', 'full_name', 'phone', 'address', 'address_text',
+            'id', 'user', 'username', 'status', 'status_display', 'full_name', 'phone', 'address', 'address_text',
             'landmark', 'notes', 'payment_method', 'payment_display', 'subtotal',
             'delivery_fee', 'discount_amount', 'tax_amount', 'total_amount',
             'coupon', 'tracking_number', 'items', 'created_at', 'updated_at',

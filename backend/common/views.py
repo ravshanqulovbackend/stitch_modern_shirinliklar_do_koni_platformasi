@@ -1,3 +1,4 @@
+from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.db.models import Sum
@@ -6,7 +7,9 @@ from datetime import timedelta
 from orders.models import Order
 from products.models import Product
 from django.contrib.auth import get_user_model
-from users.permissions import IsAdminRole
+from users.permissions import IsAdminRole, IsSuperAdminRole
+from .models import ActivityLog
+from .serializers import ActivityLogSerializer
 
 User = get_user_model()
 
@@ -22,7 +25,7 @@ class DashboardView(APIView):
 
         total_revenue = Order.objects.aggregate(total=Sum('total_amount'))['total'] or 0
         total_orders = Order.objects.count()
-        total_users = User.objects.filter(role='customer').count()
+        total_users = User.objects.filter(role='staff').count()
         total_products = Product.objects.filter(is_active=True).count()
 
         today_orders = Order.objects.filter(created_at__date=today).count()
@@ -104,3 +107,10 @@ class DashboardView(APIView):
             'popular_products': popular_products_data,
             'weekly_sales': weekly_sales,
         })
+
+
+class ActivityLogListView(generics.ListAPIView):
+    """Kim, nimani, qachon o'zgartirgani — faqat superadmin ko'ra oladi."""
+    queryset = ActivityLog.objects.select_related('user').all()
+    serializer_class = ActivityLogSerializer
+    permission_classes = [IsSuperAdminRole]

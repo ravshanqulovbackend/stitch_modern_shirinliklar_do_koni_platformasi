@@ -93,16 +93,30 @@ class Order(models.Model):
     def __str__(self):
         return f'Order #{self.pk} - {self.full_name}'
 
+    def recalculate_totals(self):
+        """Item(lar) tahrirlangach subtotal/total qayta hisoblanadi.
+        discount_amount ataylab qo'zg'atilmaydi — u buyurtma berilgan paytdagi
+        holatda muzlab qoladi (bekor qilish oqimidagi kabi)."""
+        self.subtotal = sum((item.subtotal for item in self.items.all()), 0)
+        self.total_amount = max(self.subtotal + self.delivery_fee - self.discount_amount + self.tax_amount, 0)
+        self.save(update_fields=['subtotal', 'total_amount'])
+
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')
-    product = models.ForeignKey('products.Product', on_delete=models.CASCADE)
+    # SET_NULL (CASCADE emas) — admin mahsulotni butunlay o'chirsa ham, bu buyurtma
+    # qatori (demak butun buyurtma tarixi) saqlanib qolishi kerak. `product_name`
+    # buyurtma berilgan paytdagi nomni "muzlatib" saqlaydi, shu tufayli mahsulot
+    # o'chirilgandan keyin ham eski buyurtmada nima sotib olingani ko'rinib turadi.
+    product = models.ForeignKey('products.Product', on_delete=models.SET_NULL, null=True, blank=True)
+    product_name = models.CharField(max_length=255, blank=True, default='')
     variant = models.ForeignKey('products.ProductVariant', on_delete=models.SET_NULL, null=True, blank=True)
     quantity = models.PositiveIntegerField(default=1)
     price = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
-        return f'{self.product.name} x {self.quantity}'
+        name = self.product.name if self.product else self.product_name
+        return f'{name} x {self.quantity}'
 
     @property
     def subtotal(self):

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'certificates',
     'pages',
     'contacts',
+    'support',
 ]
 
 MIDDLEWARE = [
