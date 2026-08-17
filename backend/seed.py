@@ -643,6 +643,7 @@ company, _ = Company.objects.get_or_create(pk=1, defaults={
     'experience_years': '25+',
     'product_types': '100+',
     'export_countries': '10+',
+    'partner_stores': '100+',
 })
 print('Company info created')
 

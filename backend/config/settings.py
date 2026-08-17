@@ -8,6 +8,16 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-dev-key-change
 DEBUG = os.environ.get('DJANGO_DEBUG', 'True').lower() == 'true'
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',')
 
+# nginx (docker-compose) va Railway kabi HTTPS'ni tashqarida tugatadigan proxy ortida
+# ishlaganda Django o'ziga keladigan so'rovni HTTP deb biladi (proxy bilan orasi oddiy
+# HTTP). Bu holda `request.build_absolute_uri()` (masalan avatar rasmlari uchun,
+# `users/serializers.py`dagi `ImageField`) http:// bilan boshlanuvchi URL yasaydi — HTTPS
+# sahifada bu "mixed content" sifatida brauzer tomonidan jimgina bloklanadi va rasm
+# ko'rinmay qoladi. `X-Forwarded-Proto` header'ini (nginx.conf va Railway ikkalasi ham
+# yuboradi) ishonchli signal sifatida qabul qilish buni to'g'irlaydi.
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+USE_X_FORWARDED_HOST = True
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',

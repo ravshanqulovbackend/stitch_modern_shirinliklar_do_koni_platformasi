@@ -18,6 +18,7 @@ class Company(models.Model):
     experience_years = models.CharField(max_length=20, blank=True, default='')
     product_types = models.CharField(max_length=50, blank=True, default='')
     export_countries = models.CharField(max_length=50, blank=True, default='')
+    partner_stores = models.CharField(max_length=50, blank=True, default='')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

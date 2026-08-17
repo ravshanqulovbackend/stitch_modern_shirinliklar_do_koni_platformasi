@@ -24,4 +24,8 @@ urlpatterns = [
     path('api/support/', include('support.urls')),
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT, insecure=True)
+# insecure=True: docker-compose'da /media/ ni nginx to'g'ridan-to'g'ri diskdan uzatadi,
+# lekin bitta nginx qatlami bo'lmagan muhitlarda (masalan Railway — har bir servis o'z
+# domenida, umumiy reverse-proxy yo'q) Django buni DEBUG=False bo'lsa ham o'zi uzatishi
+# kerak, aks holda avatar/mahsulot rasmlari hamma joyda 404 qaytaradi.

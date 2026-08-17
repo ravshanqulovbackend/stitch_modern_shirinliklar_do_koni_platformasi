@@ -5,7 +5,7 @@ from .models import Company, PartnershipRequest
 class CompanySerializer(serializers.ModelSerializer):
     class Meta:
         model = Company
-        fields = ('id', 'name', 'tagline', 'description', 'mission', 'vision', 'founded_year', 'employee_count', 'phone', 'email', 'address', 'website', 'logo', 'experience_years', 'product_types', 'export_countries')
+        fields = ('id', 'name', 'tagline', 'description', 'mission', 'vision', 'founded_year', 'employee_count', 'phone', 'email', 'address', 'website', 'logo', 'experience_years', 'product_types', 'export_countries', 'partner_stores')
 
 
 class PartnershipRequestSerializer(serializers.ModelSerializer):

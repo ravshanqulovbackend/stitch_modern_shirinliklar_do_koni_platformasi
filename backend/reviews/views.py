@@ -20,7 +20,8 @@ class AdminReviewListView(generics.ListAPIView):
     serializer_class = AdminReviewSerializer
     permission_classes = [IsAdminRole]
     search_fields = ['comment', 'user__username', 'user__first_name', 'user__last_name', 'product__name']
-    ordering_fields = ['created_at', 'rating']
+    ordering_fields = ['created_at', 'rating', 'product__name']
+    ordering = ['-created_at']
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
 
 

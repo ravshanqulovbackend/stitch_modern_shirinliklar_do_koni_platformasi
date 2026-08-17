@@ -4,6 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.exceptions import PermissionDenied, ValidationError
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import get_user_model
+from django.db.models import Case, When, IntegerField
 from .serializers import UserSerializer, RegisterSerializer, ChangePasswordSerializer
 from .permissions import IsAdminRole
 
@@ -71,11 +72,22 @@ class LogoutView(APIView):
 
 
 class UserListView(generics.ListAPIView):
-    queryset = User.objects.all()
+    # 'role_group' mijozlarni (staff) xodimlardan (admin/superadmin) ajratib
+    # guruhlaydi — 'role' maydonining o'zi bo'yicha saralansa alifbo tartibida
+    # "admin, staff, superadmin" bo'lib, mijozlar ikki xodim toifasi orasida
+    # qolib ketardi.
+    queryset = User.objects.annotate(
+        role_group=Case(
+            When(role='staff', then=0),
+            default=1,
+            output_field=IntegerField(),
+        )
+    )
     serializer_class = UserSerializer
     permission_classes = [IsAdminRole]
     search_fields = ['username', 'email', 'first_name', 'last_name', 'phone']
-    ordering_fields = ['created_at', 'username']
+    ordering_fields = ['created_at', 'username', 'first_name', 'role_group']
+    ordering = ['-created_at']
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
 
 
